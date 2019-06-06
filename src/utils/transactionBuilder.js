@@ -111,10 +111,10 @@ function buildVote(address, votes) {
   let contract = new VoteWitnessContract();
   contract.setOwnerAddress(Uint8Array.from(decode58Check(address)));
 
-  for (let address of Object.keys(votes)) {
+  for (let newAddress of Object.keys(votes)) {
     let vote = new VoteWitnessContract.Vote();
-    vote.setVoteAddress(Uint8Array.from(decode58Check(address)));
-    let numberOfVotes = parseInt(votes[address]);
+    vote.setVoteAddress(Uint8Array.from(decode58Check(newAddress)));
+    let numberOfVotes = parseInt(votes[newAddress]);
     if (isNaN(numberOfVotes) || numberOfVotes <= 0) {
       continue;
     }
